@@ -710,7 +710,7 @@ class EnhancedNewsRAG:
             print(f"處理新聞錯誤: {e}")
             return []
     
-    def save_results(self, results, output_file='AI增強新聞比對結果.xlsx'):
+    def save_results(self, results, output_file='../output/AI增強新聞比對結果.xlsx'):
         """儲存分析結果"""
         if not results:
             print("沒有結果可儲存")
@@ -781,7 +781,7 @@ def main(force_rebuild=False):
             print("未找到現有向量資料庫，開始建立新的...")
         
         # 整併款次資料
-        if not rag.consolidate_clauses("重訊款次整理_20250715彙整提供.xlsx"):
+        if not rag.consolidate_clauses("../data/重訊款次整理_20250715彙整提供.xlsx"):
             print("無法整併款次資料")
             return
         
@@ -796,7 +796,7 @@ def main(force_rebuild=False):
         print("成功載入現有向量資料庫")
     
     # 處理新聞
-    results = rag.process_news("新聞.csv")
+    results = rag.process_news("../data/新聞.csv")
     
     if results:
         rag.save_results(results)

@@ -353,7 +353,7 @@ class SimplifiedEnhancedRAG:
             print(f"處理新聞錯誤: {e}")
             return []
     
-    def save_results(self, results, output_file='簡化版AI新聞比對結果.xlsx'):
+    def save_results(self, results, output_file='../output/簡化版AI新聞比對結果.xlsx'):
         """儲存分析結果"""
         if not results:
             print("沒有結果可儲存")
@@ -401,7 +401,7 @@ def main():
     
     rag = SimplifiedEnhancedRAG(top_k=5)
     
-    if not rag.consolidate_clauses("重訊款次整理_20250715彙整提供.xlsx"):
+    if not rag.consolidate_clauses("../data/重訊款次整理_20250715彙整提供.xlsx"):
         print("無法整併款次資料")
         return
     
@@ -409,7 +409,7 @@ def main():
         print("無法建立向量資料庫")
         return
     
-    results = rag.process_news("新聞.csv")
+    results = rag.process_news("../data/新聞.csv")
     
     if results:
         rag.save_results(results)
