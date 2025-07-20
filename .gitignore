@@ -140,6 +140,9 @@ tmp/
 *_output.xlsx
 output/
 
+# 敏感資料檔案
+data/重訊款次整理_20250715彙整提供.xlsx
+
 # 系統檔案
 .DS_Store
 Thumbs.db
