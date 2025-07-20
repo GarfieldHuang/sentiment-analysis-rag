@@ -64,14 +64,6 @@ class EnhancedNewsRAG:
             else:
                 self.client = None
                 print("警告：未設定OpenAI API金鑰，將使用基礎分析模式")
-        if openai_api_key:
-            openai.api_key = openai_api_key
-        elif os.getenv("OPENAI_API_KEY"):
-            openai.api_key = os.getenv("OPENAI_API_KEY")
-        else:
-            print("警告: 未設定OpenAI API金鑰，請設定環境變數 OPENAI_API_KEY")
-        
-        self.client = openai.OpenAI()
     
     def clear_vector_database(self):
         """清空向量資料庫"""
@@ -551,8 +543,6 @@ class EnhancedNewsRAG:
             return candidates
             
         except Exception as e:
-            print(f"向量搜索錯誤: {e}")
-            return []
             print(f"向量搜索錯誤: {e}")
             return []
     
