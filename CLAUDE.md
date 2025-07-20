@@ -27,51 +27,51 @@ python setup_openai.py
 #### OpenAI 版本（推薦）
 ```bash
 # 主要執行
-python enhanced_news_rag.py
+cd src && python enhanced_news_rag.py
 
 # 強制重建向量資料庫
-python enhanced_news_rag.py --rebuild
+cd src && python enhanced_news_rag.py --rebuild
 
 # 測試系統
-python test_openai_faiss_rag.py
+python tests/test_openai_faiss_rag.py
 ```
 
 #### TF-IDF 版本（快速、免費）
 ```bash
 # 主要執行
-python simplified_enhanced_rag.py
+cd src && python simplified_enhanced_rag.py
 
 # 測試系統
-python test_enhanced_rag.py
+python tests/test_enhanced_rag.py
 ```
 
 ### 效能測試與分析
 ```bash
 # 比較兩個版本的效能
-python compare_rag_performance.py
+python utils/compare_rag_performance.py
 
 # 測試向量化方法
-python test_vectorization_comparison.py
+python tests/test_vectorization_comparison.py
 
 # 測試內容清理和 token 限制
-python test_content_cleaning.py
+python tests/test_content_cleaning.py
 
 # 測試款次整併
-python test_clause_consolidation.py
+python tests/test_clause_consolidation.py
 ```
 
 ### 資料管理
 ```bash
 # 重建向量資料庫
-python rebuild_vector_db.py
+python scripts/rebuild_vector_db.py
 
 # 查看結果
-python view_enhanced_results.py
-python view_results.py
+python utils/view_enhanced_results.py
+python utils/view_results.py
 
 # 除錯 Excel 結構
-python debug_excel.py
-python check_excel_structure.py
+python utils/debug_excel.py
+python utils/check_excel_structure.py
 ```
 
 ## 系統架構
@@ -106,18 +106,18 @@ python check_excel_structure.py
 - Pydantic 模型驗證
 
 ### 檔案結構
-- **主要系統**：`enhanced_news_rag.py`、`simplified_enhanced_rag.py`
-- **測試**：各種元件的 `test_*.py` 檔案
-- **工具程式**：`setup_*.py`、`view_*.py`、`debug_*.py`
-- **資料**：`重訊款次整理_20250715彙整提供.xlsx`（93 款次）、`新聞.csv`（12 則新聞網址）
-- **輸出**：`AI增強新聞比對結果.xlsx`
+- **主要系統**：`src/enhanced_news_rag.py`、`src/simplified_enhanced_rag.py`
+- **測試**：`tests/` 目錄下的各種元件測試檔案
+- **工具程式**：`scripts/` 目錄下的設定腳本、`utils/` 目錄下的工具程式
+- **資料**：`data/重訊款次整理_20250715彙整提供.xlsx`（93 款次）、`data/新聞.csv`（12 則新聞網址）
+- **輸出**：`output/AI增強新聞比對結果.xlsx`
 
 ## 開發指引
 
 ### 測試
 - 修改程式碼後務必執行相關測試檔案
-- TF-IDF 版本測試使用 `python test_enhanced_rag.py`
-- OpenAI 版本測試使用 `python test_openai_faiss_rag.py`
+- TF-IDF 版本測試使用 `python tests/test_enhanced_rag.py`
+- OpenAI 版本測試使用 `python tests/test_openai_faiss_rag.py`
 
 ### 設定參數
 - `top_k`：KNN 搜尋結果數量（預設：5）
@@ -142,7 +142,6 @@ python check_excel_structure.py
 - 使用 jieba 正確處理中文文字
 - 遵循新聞擷取的 HTML 清理模式
 - 使用批次處理 API 呼叫以管理成本
-```
 
 ## Claude AI 助手指引
 
